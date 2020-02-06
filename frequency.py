@@ -1,5 +1,5 @@
 word_histogram = {}
-with open('raven.txt','r') as f:
+with open('frost.txt','r') as f:
     for line in f:
         for word in line.split():
             single_word = word
@@ -7,7 +7,6 @@ with open('raven.txt','r') as f:
 
 def frequency(word, histogram):
     return histogram[word]
-
-print(frequency("Raven", word_histogram))
+print(frequency("orchard", word_histogram))
 
 

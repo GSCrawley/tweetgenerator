@@ -1,7 +1,6 @@
 import sys as sys
 from random import randint
 
-
 if __name__ == "__main__":
     args = sys.argv
 
