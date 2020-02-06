@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def generate_words():
-    lines = get_lines("./frost.txt")
+    lines = open("./frost.txt", "r").readlines()
     myhistogram = word_histogram(lines)
     sentence = ""
 
