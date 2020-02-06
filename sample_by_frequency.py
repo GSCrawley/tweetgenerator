@@ -10,7 +10,9 @@ def sample_by_frequency(histogram):
       start = 0   
       for word, count in histogram.items():
         end = start + count
-        if random_index >= start and random_index <= end:
-          return(word)
+        if random_index >= start and random_index < end:
+          return word
+        else:
+          start = end
           
 print(sample_by_frequency(word_counts))

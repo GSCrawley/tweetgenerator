@@ -1,17 +1,19 @@
 from flask import Flask
-from histogram import word_histogram
+from histogram import histogram
+from sample_by_frequency import sample_by_frequency
 
 app = Flask(__name__)
 
 @app.route('/')
 def generate_words():
-    lines = open("./frost.txt", "r").readlines()
-    myhistogram = word_histogram(lines)
+    
+    myhistogram = histogram()
     sentence = ""
 
     num_words = 10 
     for i in range(num_words):
         word = sample_by_frequency(myhistogram)
+        print(word)
         sentence += " " + word
 
     return sentence
