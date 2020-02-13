@@ -7,3 +7,4 @@ def histogram(lines):
         else:
           histogram[word] = 1
     return histogram
+
