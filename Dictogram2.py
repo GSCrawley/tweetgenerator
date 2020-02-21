@@ -6,31 +6,24 @@ class Dictogram:
         '''Initializes the dictogram properties'''
 
         self.word_list = word_list
-       
         self.dictionary_histogram = self.build_dictogram()
-       
-
-
         self.tokens = sum(self.dictionary_histogram.values())
         self.types = self.unique_words()
 
     def build_dictogram(self): 
         '''Creates a histogram dictionary using the word_list property and returns it'''
         word_histogram = {}
-        #with open('frost.txt','r') as f:
-            #for line in f:
+        # with open('frost.txt','r') as f:
+        #     for line in f:
         for word in self.word_list:
             single_word = word
             word_histogram[word] = word_histogram.get(word, 0) + 1
         return word_histogram        
 
-
     def frequency(self, word):
         '''returns the frequency or count of the given word in the dictionary histogram'''
-        #TODO: use your frequency function as a starting point to complete this method
         return self.dictionary_histogram[word]
-        print(frequency("the", self.word_histogram))
-
+        #print(frequency("one", self.word_histogram))
 
     def unique_words(self):
         '''returns the number of unique words in the dictionary histogram'''
@@ -69,7 +62,6 @@ def print_dictogram(word_list):
 
 def print_dictogram_samples(dictogram):
     '''Compares sampled frequency to observed frequency'''
-
     print('Dictionary Histogram samples:')
     # Sample the histogram 10,000 times and count frequency of results
     samples_list = [dictogram.sample() for _ in range(10000)]
@@ -104,4 +96,7 @@ def print_dictogram_samples(dictogram):
     print(divider)
     print()
 
-print_dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
+#print_dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
+dictogram = Dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
+print(dictogram.dictionary_histogram)
+#dictogram.frequency("red")
