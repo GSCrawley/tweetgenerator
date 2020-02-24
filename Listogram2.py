@@ -1,6 +1,6 @@
 from random import randint
-from dictogram import histogram
-from listogram import listogram
+# from dictogram import histogram
+# from listogram import listogram
 
 class Listogram:
 
@@ -17,18 +17,17 @@ class Listogram:
     def build_listogram(self): 
         '''Creates a histogram list of lists using the word_list property and returns it'''
         listogram = []
-        for word in listogram:
+        for word in self.word_list:
             word = word.rstrip()
-            result = get_index(word, listogram)
+            result = self.get_index(word, listogram)
             if result == "nope didn't find it":
                 listogram.append([word,1])
             else:
                 listogram[result][1] += 1
     
         return listogram
-
-    lines = open("frost.txt", "r").readlines()
-    print(listogram(lines))
+        lines = open("frost.txt", "r").readlines()
+        print(listogram(lines))
     
     def get_num_tokens(self):
         '''gets the number of tokens in the listogram'''
@@ -43,13 +42,12 @@ class Listogram:
         for inner_list in listogram:
             if inner_list[0] == word:
                 return result
-            else:
-                result += 1
-                return "nope didn't find it"
+            result += 1
+        return "nope didn't find it"
 
     def frequency(self, word):
         '''returns the frequency or count of the given word in the list of lists histogram'''
-        return self.list_histogram
+        return self.list_histogram[self.get_index(word, self.list_histogram)][1]
         print(frequency(self.word_histogram, 'one'))
         
     def unique_words(self):
@@ -61,13 +59,13 @@ class Listogram:
         '''Randomly samples from the list of list histogram based on the frequency, returns a word'''
         random_index = randint(0, self.tokens -1)
         start = 0
-        for word, count in self.list_histogram.items:
+        for word, count in self.list_histogram:
             end = start + count
             if random_index >= start and random_index < end:
                 return word
             else:
                 start = end
-            print(sample(self))
+        print(sample(self))
 
 def print_listogram(word_list):
     '''Creates a list based histogram (listogram) and then prints out its properties and samples from it'''
