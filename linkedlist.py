@@ -125,9 +125,9 @@ class LinkedList(object):
                 return item
             current_node = current_node.next
             previous_node = previous_node.next
-            raise ValueError('Item not found: {}'.format(item)
+            raise ValueError('Item not found: {}'.format(item))
 
-def test_linked_list(self):
+def test_linked_list():
     ll = LinkedList()
     print('list: {}'.format(ll))
 
