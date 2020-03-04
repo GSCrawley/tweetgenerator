@@ -102,13 +102,13 @@ class LinkedListTest(unittest.TestCase):
         # Delete should decrease length
         ll.delete('A')
         assert ll.length() == 4
-        ll.delete('E')
+        ll.delete('B')
         assert ll.length() == 3
         ll.delete('C')
         assert ll.length() == 2
         ll.delete('D')
         assert ll.length() == 1
-        ll.delete('B')
+        ll.delete('E')
         assert ll.length() == 0
 
     def test_append(self):

@@ -105,27 +105,29 @@ class LinkedList(object):
         """Delete the given item from this linked list, or raise ValueError.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
-        # TODO: Loop through all nodes to find one whose data matches given item
-        # TODO: Update previous node to skip around node with matching data
+        if self.is_empty(): #if is_empty is True
+            raise ValueError('Item not found: {}'.format(item)) #The list is empty and throw error
+            return
+        currentNode = self.head
+        if currentNode.data == item: #if head has the item
+            self.head = currentNode.next #if head has next... assign next as new head
+            if currentNode.next == None: #head is the last item... set self.tail to none
+                self.tail = None
+            return
+        prev = None
+        while currentNode != None: #loop until we reach tail
+            print("Current node =", currentNode)
+            if currentNode.data == item: #if node's data is the item... found!
+                if currentNode.next == None: #if currentNode is the tail because it has no next...
+                    self.tail = prev #prev node will now be the new tail
+                prev.next = currentNode.next #DELETE currentNode by removing prev's next (reference) to currentNode's next
+                return
+            # TODO: Update previous node to skip around node with matching data
+            prev = currentNode #if currentNode's data is not item,
+            currentNode = currentNode.next #keep going til it reach the tail
+            print("Current.next = ", currentNode)
         # TODO: Otherwise raise error to tell user that delete has failed
-        # Hint: raise ValueError('Item not found: {}'.format(item))
-        current_node = self.head.next
-        previous_node = self.head
-
-        if self.head.data == item:
-            self.head = self.head.next
-            return item
-
-
-
-        while current_node is not None:
-            if current_node.data == item:
-                input()
-                previous_node.next = current_node.next
-                return item
-            current_node = current_node.next
-            previous_node = previous_node.next
-            raise ValueError('Item not found: {}'.format(item))
+        raise ValueError('Item not found: {}'.format(item))
 
 def test_linked_list():
     ll = LinkedList()
