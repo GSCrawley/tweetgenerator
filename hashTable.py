@@ -73,26 +73,20 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket]
-        index = self._bucket_index(key) # tells us where in the list our bucket is located
-
-        bucket = self.buckets[index] # selects our current bucket
-
-        entry = bucket.find(lambda key_value: key_value[0] == key) # If true, you return the value associated with the key
-
-        if entry: #found
+        index = self._bucket_index(key) 
+        bucket = self.buckets[index] 
+        entry = bucket.find(lambda key_value: key_value[0] == key) 
+        if entry: 
             return True
         else:
             return False
 
 
     def get(self, key):
-        index = self._bucket_index(key) # tells us where in the list our bucket is located
-
-        bucket = self.buckets[index] # selects our current bucket
-
-        entry = bucket.find(lambda key_value: key_value[0] == key) # If true, you return the value associated with the key
-
-        if entry: #found
+        index = self._bucket_index(key) 
+        bucket = self.buckets[index] 
+        entry = bucket.find(lambda key_value: key_value[0] == key) 
+        if entry:
             return entry[1]
         else:
             raise KeyError('Key not found: {}'.format(key))
